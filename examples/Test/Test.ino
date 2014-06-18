@@ -109,7 +109,10 @@ void loop(void) {
         uchar *actualKey;
         uchar keyNumber = 0;
         for(blockAddr = 0; blockAddr < 64; blockAddr++){
-          if (blockAddr % 4 != 0){
+          if (blockAddr % 4 == 0){
+            actualKey = sectorKeyA[keyNumber];
+            keyNumber++;
+          }
             //Do auth and read
             status = rfid.auth(PICC_AUTHENT1A, blockAddr, actualKey, uuid);
             if (status == MI_OK){
@@ -117,7 +120,8 @@ void loop(void) {
               status = rfid.read(blockAddr, blockData);
               if (status == MI_OK)
               {
-                Serial.println("Read from the card, the data is : ");
+                
+               Serial.println("Read from the card, the data is : ");
                 for (i=0; i<16; i++)
       	        {
                   Serial.print(blockData[i],HEX);
@@ -141,12 +145,7 @@ void loop(void) {
               Serial.println("");      
             }
             
-          }else{
-            //Load next key and auth
-            actualKey = sectorKeyA[keyNumber];
-            keyNumber++;
-            
-          }
+          
         }
         
       }
