@@ -1,0 +1,21 @@
+{
+  "name": "RFID522",
+  "version": "1.0.0",
+  "description": "An easy to use arduino library for the RC522 rfid reader.",
+  "keywords": "rfid,522",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/maxpowel/RFID522"
+  },
+  "authors":
+  [
+    {
+      "name": "Alvaro Garcia",
+      "email": "maxpowel@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": "*"
+}
